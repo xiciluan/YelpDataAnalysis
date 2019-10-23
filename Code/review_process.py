@@ -11,11 +11,11 @@ with open('user.json') as f:
         user_avgRatings[d["user_id"]] = d["average_stars"]
     f.close()
 
-biz_resturants = set()
-with open('biz_resturants.csv') as f:
+biz_fast_food = set()
+with open('biz_fast_food.csv') as f:
     reader = csv.reader(f)
     for row in reader:
-        biz_resturants.add(row[0])
+        biz_fast_food.add(row[0])
 
 
 
@@ -26,7 +26,7 @@ with open('review.json') as f, open('review_summary.csv', 'w') as o:
     line = f.readline()
     for line in iter_f:
         d = json.loads(line)
-        if d['business_id'] not in biz_resturants:
+        if d['business_id'] not in biz_fast_food:
             continue
         if d['stars'] >= 4.0:
             label = 'Positive'
