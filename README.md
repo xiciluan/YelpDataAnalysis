@@ -1,6 +1,6 @@
 # 628-Module1-Group5
 
-This repo contains work of module3 STAT 628 instruted by Professor Hyunseung Kang.
+This repo contains work of module3 STAT 628 instructed by Professor Hyunseung Kang.
 
 The main focus of this Yelp Data Analysis is to propose data-driven, actionable decisions to all business owner in the fast food industry to improve their ratings on Yelp. The whole project mainly consist of the following parts:
 
