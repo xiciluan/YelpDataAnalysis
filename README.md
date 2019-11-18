@@ -1,4 +1,4 @@
-# 628-Module1-Group5
+# 628-Module3-Group5
 
 This repo contains work of module3 STAT 628 instructed by Professor Hyunseung Kang.
 
