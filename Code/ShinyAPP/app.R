@@ -16,13 +16,17 @@ ui <- fluidPage(
     titlePanel("Suggestions for Fast Food Restaurants(Yelp)"),
     sidebarLayout(
         sidebarPanel(
-            selectInput('name', 'Please enter the name of restaurant you wrote on Yelp.', c(google$name), multiple=FALSE, selectize=TRUE),
-            selectInput('state','You can enter the state of this restaurant.',choices = "",multiple = FALSE,selectize = TRUE),
-            selectInput('city','You can enter the city of this restaurant.',choices = "",multiple = FALSE,selectize = TRUE),
-            selectInput('address','You can enter the address of this restaurant.',choices = "",multiple = FALSE,selectize = TRUE),
+            selectInput('name', 'Please type in your restaurant name.', c(google$name), multiple=FALSE, selectize=TRUE),
+            selectInput('state','Please type in your state.',choices = "",multiple = FALSE,selectize = TRUE),
+            selectInput('city','Please type in your city.',choices = "",multiple = FALSE,selectize = TRUE),
+            selectInput('address','Please type in your address.',choices = "",multiple = FALSE,selectize = TRUE),
             actionButton("suggestion", "Get suggestions!"),
             # downloadButton("download", "Download"),
-            helpText("If you have any problem, please contact us! Our email: hpan55@wisc.edu")
+            helpText("If you have any problem, please contact us! 
+                     Our email: hpan55@wisc.edu;
+                                xluan5@wisc.edu;
+                                bteng2@wisc.edu;
+                                ylan27@wisc.edu")
             
         ),
         
@@ -140,7 +144,7 @@ server <- function(input, output, session) {
             }
             sug_rd = ""
             if(!is.na(line$RestaurantsDelivery)){
-                sug_rd = ifelse(line$RestaurantsDelivery,"Your delievery service improve your ratings a lot!<br>","")
+                sug_rd = ifelse(line$RestaurantsDelivery,"Your delivery service improve your ratings a lot!<br>","")
             }
             sug_os = ""
             if(!is.na(line$OutdoorSeating)){
@@ -216,7 +220,7 @@ server <- function(input, output, session) {
           if(line$att_service>=0.0005){
             sug_service = "Urgency! Plz improve your service ASAP!<br>"
           }else if(line$att_service>=0.0002){
-            sug_service = "Some guests are complaineing about your resturant's service.<br>"
+            sug_service = "Some guests are complaining about your restaurant's service.<br>"
           }
           
           sug_salty = ""
@@ -286,14 +290,7 @@ server <- function(input, output, session) {
         }
 
 
-        # suggest$suggestions = paste("Please supply your business parking information on yelp webside.",
-        #                             "Please supply your delivery information on yelp webside.",
-        #                             "Please supply your outdoor-seating information on yelp webside.",
-        #                             "Please supply your take-out information on yelp webside.",
-        #                             "Please supply your Wifi information on yelp webside.",
-        #                             "Please supply your bike parking information on yelp webside.",
-        #                             "Please supply your GoodForGroups information on yelp webside.",
-        #                             sep = "<br>")
+
         suggest$pros = ""
         suggest$cons = ""
         
@@ -345,7 +342,6 @@ server <- function(input, output, session) {
                 line_star=data.frame(stars = c(1,2,3,4,5),num_reviews = c(line$star1,line$star2,line$star3,line$star4,line$star5))
                 plot_star<-ggplot(data=line_star, aes(x=stars, y=num_reviews,fill = stars)) +
                     geom_bar(stat="identity") +
-                    # ylab("number of reviews") +
                     labs(title = paste0("Stars Distribution of ",line$name),
                          subtitle = paste(line$address,line$city,line$state,line$postal_code,sep = ", "),
                          x = "stars", y = "number of reviews",
