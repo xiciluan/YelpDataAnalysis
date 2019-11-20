@@ -8,7 +8,7 @@ The main focus of this Yelp Data Analysis is to propose data-driven, actionable 
 2. Provide recommendations based on the reviews
 3. Provide personalized suggesions for all fast food resturants owners
 
-## Link to the APP for recommendation to business owners
+## Link to the APP
 
 - [Recommendation APP](https://hpan55.shinyapps.io/change2/)
 
